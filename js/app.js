@@ -57,8 +57,14 @@ Player.prototype.update = function() {
 };
 
 Player.prototype.reset = function() {
+  this.win = false;
   this.x = 202;
   this.y = 385;
+  allEnemies = [];
+  var newEnemy1 = new Enemy(-101, 53, 200);
+  var newEnemy2 = new Enemy(-101, 136, 150);
+  var newEnemy3 = new Enemy(-101, 219, 100);
+  allEnemies.push(newEnemy1, newEnemy2, newEnemy3);
 }
 
 Player.prototype.render = function() {
@@ -76,7 +82,6 @@ Player.prototype.handleInput = function(direction) {
     this.y += this.vertical;
   }
 }
-
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies

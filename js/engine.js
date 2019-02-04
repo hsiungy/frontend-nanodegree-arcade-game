@@ -22,11 +22,8 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime,
-        requestID;
-
-    var modal = document.querySelector('.modal');
-    var replay = document.querySelector('#replay');
+        requestID,
+        lastTime;
 
     canvas.width = 505;
     canvas.height = 606;
@@ -59,10 +56,14 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        // win.requestAnimationFrame(main);
         if (player.win) {
           win.cancelAnimationFrame(requestID);
-          modal.classList.add('hide');
+          setTimeout(function() {
+            if (confirm('You win! Play again?')) {
+              requestID = win.requestAnimationFrame(main);
+              player.reset();
+            }
+          }, 300)
         } else {
           requestID = win.requestAnimationFrame(main);
         }
@@ -89,7 +90,6 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
