@@ -44,6 +44,7 @@ var Player = function(x, y) {
   this.win = false;
 }
 
+// Update the player's position
 Player.prototype.update = function() {
   if (this.y == -30) {
     this.win = true;
@@ -56,6 +57,7 @@ Player.prototype.update = function() {
   }
 };
 
+// Reset the player's position when player collides with an enemy, or when player wins and plays again.
 Player.prototype.reset = function() {
   this.win = false;
   this.x = 202;
@@ -67,10 +69,12 @@ Player.prototype.reset = function() {
   allEnemies.push(newEnemy1, newEnemy2, newEnemy3);
 }
 
+// Draw the player on the screen
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+// Handle key presses by the gameplayer
 Player.prototype.handleInput = function(direction) {
   if ((direction == 'left') && (this.x > 0)) {
     this.x -= this.horizontal;
