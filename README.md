@@ -3,6 +3,7 @@
 ## Installation
 
 Clone this project to your machine by running in the Terminal:
+
 `git clone https://github.com/hsiungy/frontend-nanodegree-arcade-game.git`
 
 Open up the `index.html` file in your favorite browser to start the game.
